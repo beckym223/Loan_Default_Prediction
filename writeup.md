@@ -39,6 +39,15 @@ Precision and recall are the primary metrics with which we will evaluate the mod
 
 
 ### SVM
+Support Vector Machines are a particularly useful classification mechanism because our data set has a lot of features. This makes SVM particularly useful because it is effective in high-dimensional spaces. Additionally, we can adjust the kernel type and slack parameter (C) to make the model be the best fit to our data. Using grid search as well as a series of trial-and-error attempts, we arrived at a slack parameter value of C = 0.5 and the kernel type set to rbf. We set the class_weights to 'balanced' but had experimented with adjusting the class weight ratio in the model since our main obstacle was that instances of the positive class (where default=1, or the people did default on their loans) was significantly outnumbered by instances of the negative class in our dataset. Instead of addressing this issue by adjusting the class weights, however, we ended up deciding to use sklearn's RandomUnderSampler - a tool that handles class imbalance by undersampling the majority class. We tried using both RandomUnderSampler and SMOTE (a similar technique that oversamples the minority class rather than undersampling the majority class) but decided to use RandomUnderSampler because it yielded better results in terms of predicting instances of the minority class.
+
+Using all of the predictors,our SVM model yielded the following metrics:
+ - precision: 0.21
+ - Recall: 0.70
+ - Accuracy: 0.66
+
+Because potential users of this model (banks and other lending companies) would care more about predicting true positives that true negatives (in other words, they care more about being able to accurately predict people defaulting on their loans than predicting people to not default), we prioritized recall over precision in making this model
+
 
 
 
