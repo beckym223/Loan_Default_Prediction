@@ -1,10 +1,6 @@
-# Title
 
 ## Introduction to data
->TODO: Where we got it, what it's used for
-
-
-This dataset has 255,347 cases and 17 predictor columns. When we one-hot encoded the categorical features we ended up with 24 predictors. None of the variables were highly correlated with each other and there were no outliers. We also standardized the numeric variables. The predictor names are as follows:
+This dataset on Loan Default Prediction comes from Kaggle and has 255,347 cases and 17 predictor columns. When we one-hot encoded the categorical features we ended up with 24 predictors. None of the variables were highly correlated with each other and there were no outliers. We also standardized the numeric variables. The predictor names are as follows:
 
 **Numeric**
 - `Age`
@@ -89,8 +85,23 @@ The calculated precision and recall are based on a decision threshold of 0.5, wh
 
 !['Prediction threshold metrics'](writeup_images/prediction_threshold_metrics.png)
 
+We also tried adding second degree polynomial features to the logistic regression, as interactions between variables can reveal new correlations. We then narrowed it down to 40 variables based on feature importance from a regularized lasso regression. Here are the results:
 
-### Conclusion on this?
+- Precision: 0.36
+- Recall: 0.33
+- Accuracy: 0.86 
+
+This model's predicted probabilities are slightly more skewed right, meaning that there are fewer false positives but also fewer false negatives. Looking at the coefficients for the two models can also tell us about what features were most important:
+
+!['logistic regression features'](writeup_images/log_reg_coefs.png)
+
+!['polynomial features'](writeup_images/poly_feature_coefs.png)
+
+
+**Some observations:**
+- There is a strong negative correlation between `Age` and `Default`, indicating that older applicants are predicted to be less likely to default on their loans
+- Similarly, there is a positive correlation for `Unemployed` (a categorical variable) as well as `InterestRate`, which makes sense in the context of this problem
+- The negative coefficient for `Income * LoanAmount` indicates that the extent to which `LoanAmount` is correlated with defaulting somewhat depends on `Income`, making it so a larger income makes someone less likely to default on a larger loan. 
 
 
 ## Comparing Models
@@ -104,11 +115,6 @@ We can also see the distribution of false and true positives with these confusio
 
 !["Confusion Matrices"](writeup_images/confusion_matrices.png)
 
-
-**Some of our observations:**
->TODO
--   observation 1
--   observation 2
 
 
 ## Ethical discussion
