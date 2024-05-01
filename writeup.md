@@ -36,7 +36,26 @@ Precision and recall are the primary metrics with which we will evaluate the mod
 
 >TODO: Write a bit about what choices you made while fitting the model
 ### Random Forest
+Random forests are powerful ensemble learning methods that combine many decision tree classifiers to improve predictive performance and prevent overfitting. To build our random forest model, we used scikit-learn’s RandomForestClassifier. We performed a grid search with cross-validation over a range of hyperparameters to tune the model. 
 
+The best performing hyperparamters, as determined by grid search, were:
+
+•	n_estimators = 200
+•	max_depth = 80
+•	min_samples_leaf = 1
+•	min_samples_split = 2
+
+With these hyperparamters, the random forest classifier achieved an accuracy of 93.55% on the test set. 
+
+We also generated a classification report and confusion matrix to evaluate the model’s performance. The classification report showed a precision of 89% for the 0 class and a recall of 87% for the positive class (default=1). The confusion matrix provided a visual representation of the true positives, true negatives, false positives, and false negatives.
+
+Random forests have several advantages that make them well-suited for this dataset:
+
+1.	They can automatically handle non-linear relationships and feature interactions. 
+2.	They are robust to outliers and noise in the data. 
+3.	They provide feature importance scores to understand the most predictive variables. 
+4.	They tend to have low bias and are resistant to overfitting through techniques like bagging. 
+The main downside is that random forests are black-box models that lack the same level of interpretability as logistic regression does. However, their superior predictive performance and other advantages outweighed this concern. 
 
 ### SVM
 Support Vector Machines are a particularly useful classification mechanism because our data set has a lot of features. This makes SVM particularly useful because it is effective in high-dimensional spaces. Additionally, we can adjust the kernel type and slack parameter (C) to make the model be the best fit to our data. Using grid search as well as a series of trial-and-error attempts, we arrived at a slack parameter value of C = 0.5 and the kernel type set to rbf. We set the class_weights to 'balanced' but had experimented with adjusting the class weight ratio in the model since our main obstacle was that instances of the positive class (where default=1, or the people did default on their loans) was significantly outnumbered by instances of the negative class in our dataset. Instead of addressing this issue by adjusting the class weights, however, we ended up deciding to use sklearn's RandomUnderSampler - a tool that handles class imbalance by undersampling the majority class. We tried using both RandomUnderSampler and SMOTE (a similar technique that oversamples the minority class rather than undersampling the majority class) but decided to use RandomUnderSampler because it yielded better results in terms of predicting instances of the minority class.
