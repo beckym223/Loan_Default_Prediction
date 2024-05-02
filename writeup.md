@@ -33,7 +33,6 @@ We initially tested 3 different models for our classification: Logistic Regressi
 
 Precision and recall are the primary metrics with which we will evaluate the models. In this context, precision refers to the accuracy of positive predictions, the proportion of cases predicted to default on loans who *actually* will, while recall is the proportion of cases that default that are *predicted* to default. It is unclear which metric is more important: Banks may experience more loss from lower recall, as falsely negative predictions means that someone was granted a loan and defaulted. From a humanitarian perspective, though, lower precision means that more people will have their loan applications rejected or face higher rates without a reliable reason. 
 
->TODO: Write a bit about what choices you made while fitting the model
 ### Random Forest
 Random forests are powerful ensemble learning methods that combine many decision tree classifiers to improve predictive performance and prevent overfitting. To build our random forest model, we used scikit-learn’s RandomForestClassifier. We performed a grid search with cross-validation over a range of hyperparameters to tune the model. 
 
@@ -127,3 +126,5 @@ Improper usage of this model could lead to further discrimination and lack of ac
 
 Predicting loan default is a very important decision because being able to receive or not receive a loan has tremendous implications for one’s financial wellbeing. Machine learning models have the ability to expedite the approval process and could be said to prevent human biases yet may end up reinforcing historical biases to the detriment of society at large. Because these decisions cannot afford to be taken lightly, we should strive to further research how we can integrate machine learning into the decision making process while still ensuring its fairness. 
 
+## Conclusion
+While none of our models are necessarily strong enough to implement in a real world setting, they did illustrate some of the complexities of modeling real world situations, especially ones with high stakes. The variation in models are great examples of the precision-recall tradeoff, especially with such imbalanced classes. In some ways, these algorithms can promote fairness and decrease human bias but are still limted by the nuances of life experiences. 
