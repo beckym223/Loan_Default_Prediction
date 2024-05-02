@@ -117,16 +117,19 @@ We can also see the distribution of false and true positives with these confusio
 
 !["Confusion Matrices"](writeup_images/confusion_matrices.png)
 
-
 Due to the nature of loan defaults, recall is more important than precision in the lender’s perspective. A higher recall means that the model can accurately identify a higher proportion of potential defaulters. Missing these cases, false negatives, would result in granting loans to applicants who may eventually default, leading to greater financial losses for the lender. 
 
-Looking at the recall values, the logistic regression, 0.70, model performs reasonably well in identifying true positive cases of loan defaults. However, the logistic regression model has a lower precision of 0.22, when compared with random forest of 0.37, indicating a higher number of false negatives compared to the other models. This aligns with its high precision and recall scores. 
+Looking at the recall values, the random forest (0.28), and logistic regression (0.70)  models perform reasonably well in identifying true positive cases of loan defaults. However, the logistic regression model has a lower precision of 0.22. 
 
 The polynomial logistic regression model shows an improvement over the initial logistic regression model, with higher precision, 0.36, and accuracy, 0.86, but still lower recall, 0.33, than the random forest. 
 
 The SVM model has the lowest precision (0.21) and recall (0.70) among the evaluated models, making it the least suitable for this task. 
 
-Based on this, the logistic regression model is the most appropriate choice for this loan default prediction task, as it strikes the best balance between precision and recall, with a clear emphasis on maximizing recall to minimize financial losses for the lender.  
+The confusion matrices show that the random forest has fewer false positives compared to logistic regression, but more false negatives. 
+
+While the random forest has high overall accuracy of 0.86, its precision for the positive class is only 0.37, and recall is 0.28. Given the importance of recall from the lender’s perspective to minimize financial losses from defaulters, the logistic regression model with a recall of 0.67 performs better than the random forest in identifying true positive default cases. 
+
+Based on this, the random forest model is the most appropriate choice for this loan default prediction task, as it strikes the best balance between precision and recall, with a clear emphasis on maximizing recall to minimize financial losses for the lender. 
 
 ## Ethical discussion
 Our machine learning model to predict whether or not individuals will default on their loans, and all those like it, has the potential to make lending a much more equitable and transparent process. The usage of models like ours has the potential to enhance the efficiency and fairness of financial services. However, we would be remiss if we did not highlight its potential to be used unethically. It is imperative to ensure that such powerful tools are used responsibly and fairly. 
@@ -136,4 +139,6 @@ Improper usage of this model could lead to further discrimination and lack of ac
 Predicting loan default is a very important decision because being able to receive or not receive a loan has tremendous implications for one’s financial wellbeing. Machine learning models have the ability to expedite the approval process and could be said to prevent human biases yet may end up reinforcing historical biases to the detriment of society at large. Because these decisions cannot afford to be taken lightly, we should strive to further research how we can integrate machine learning into the decision making process while still ensuring its fairness. 
 
 ## Conclusion
+It’s important to note that the models are context dependent, you should take note of what model an industry/provider is using. In our case, the lender will prefer logistic regression’s higher recall of 0.67, your ordinary person would rather have the random forest model with a higher precision of 0.37 for predicting defaults. Not only are the models biased in certain ways, just because of the nature of loan default data, but determining what model to use is imperative to society. Through our exploration, we learned that we can’t look only at the dataset for bias; rather, since tuning of our hyperparameters and the different models drastically changed the accuracy, precision, and recall, we need to take a collective look and investigate the different types of models and who the models are being made for.
+
 While none of our models are necessarily strong enough to implement in a real world setting, they did illustrate some of the complexities of modeling real world situations, especially ones with high stakes. The variation in models are great examples of the precision-recall tradeoff, especially with such imbalanced classes. In some ways, these algorithms can promote fairness and decrease human bias but are still limted by the nuances of life experiences. 
