@@ -43,9 +43,9 @@ The best performing hyperparamters, as determined by grid search, were:
 •	min_samples_leaf = 1
 •	min_samples_split = 2
 
-With these hyperparamters, the random forest classifier achieved an accuracy of 93.55% on the test set. 
+With these hyperparamters, the random forest classifier achieved an accuracy of 0.86 on the test set. 
 
-We also generated a classification report and confusion matrix to evaluate the model’s performance. The classification report showed a precision of 89% for the 0 class and a recall of 87% for the positive class (default=1). The confusion matrix provided a visual representation of the true positives, true negatives, false positives, and false negatives.
+We also generated a classification report and confusion matrix to evaluate the model’s performance. The classification report showed a precision of 0.37 and a recall of 0.28 for the positive class (default=1). The confusion matrix provided a visual representation of the true positives, true negatives, false positives, and false negatives.
 
 Random forests have several advantages that make them well-suited for this dataset:
 
@@ -120,15 +120,13 @@ We can also see the distribution of false and true positives with these confusio
 
 Due to the nature of loan defaults, recall is more important than precision in the lender’s perspective. A higher recall means that the model can accurately identify a higher proportion of potential defaulters. Missing these cases, false negatives, would result in granting loans to applicants who may eventually default, leading to greater financial losses for the lender. 
 
-Looking at the recall values, the random forest, 0.87, and logistic regression, 0.70, models perform reasonably well in identifying true positive cases of loan defaults. However, the logistic regression model has a lower precision of 0.22, indicating a higher number of false negatives compared to the other models. This aligns with its high precision and recall scores. 
+Looking at the recall values, the logistic regression, 0.70, model performs reasonably well in identifying true positive cases of loan defaults. However, the logistic regression model has a lower precision of 0.22, when compared with random forest of 0.37, indicating a higher number of false negatives compared to the other models. This aligns with its high precision and recall scores. 
 
 The polynomial logistic regression model shows an improvement over the initial logistic regression model, with higher precision, 0.36, and accuracy, 0.86, but still lower recall, 0.33, than the random forest. 
 
 The SVM model has the lowest precision (0.21) and recall (0.70) among the evaluated models, making it the least suitable for this task. 
 
-Based on this, the random forest model is the most appropriate choice for this loan default prediction task, as it strikes the best balance between precision and recall, with a clear emphasis on maximizing recall to minimize financial losses for the lender. 
-
-While the logistic regression models provide more interpretability through their feature importance plots, the superior predictive performance of the random forest outweighs this advantage, in the context of the lender’s priority of accurately identifying potential defaulters. 
+Based on this, the logistic regression model is the most appropriate choice for this loan default prediction task, as it strikes the best balance between precision and recall, with a clear emphasis on maximizing recall to minimize financial losses for the lender.  
 
 ## Ethical discussion
 Our machine learning model to predict whether or not individuals will default on their loans, and all those like it, has the potential to make lending a much more equitable and transparent process. The usage of models like ours has the potential to enhance the efficiency and fairness of financial services. However, we would be remiss if we did not highlight its potential to be used unethically. It is imperative to ensure that such powerful tools are used responsibly and fairly. 
