@@ -120,7 +120,7 @@ We can also see the distribution of false and true positives with these confusio
 
 Due to the nature of loan defaults, recall is more important than precision in the lender’s perspective. A higher recall means that the model can accurately identify a higher proportion of potential defaulters. Missing these cases, false negatives, would result in granting loans to applicants who may eventually default, leading to greater financial losses for the lender. 
 
-Looking at the recall values, the random forest, 0.87, and logistic regression, 0.70, models perform reasonably well in identifying true positive cases of loan defaults. However, the logistic regression model has a lower precision of 0.22, indicating a higher number of false negatives (4,281) compared to the other models. This aligns with its high precision and recall scores. 
+Looking at the recall values, the random forest, 0.87, and logistic regression, 0.70, models perform reasonably well in identifying true positive cases of loan defaults. However, the logistic regression model has a lower precision of 0.22, indicating a higher number of false negatives compared to the other models. This aligns with its high precision and recall scores. 
 
 The polynomial logistic regression model shows an improvement over the initial logistic regression model, with higher precision, 0.36, and accuracy, 0.86, but still lower recall, 0.33, than the random forest. 
 
